@@ -81,6 +81,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30483, 1.04674, -8.62436 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 script = ExtResource( 5 )
 lod_scale = 2.0
+centered = true
 _terrain_data = ExtResource( 12 )
 chunk_size = 32
 collision_enabled = true
