@@ -71,4 +71,4 @@ size = 40.0
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831522, 7.45578, 3.98975 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14747, 7.40396, 4.10124 )
