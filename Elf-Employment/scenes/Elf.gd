@@ -26,9 +26,9 @@ func _process(delta):
 	offset.y = 0
 	offset = offset.normalized()
 	
-#	print("I am at: ", self.translation)
-#	print("I want to go to: ", navigator.get_next_location())
-#	print("Offset is: ", offset)
+	print("I am at: ", self.translation)
+	print("I want to go to: ", navigator.get_next_location())
+	print("Offset is: ", offset)
 	self.translate(offset * (speed * delta))
 	
 func _on_report_intersection(intersection_point: Vector3):
