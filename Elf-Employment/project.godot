@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Elf-Employment"
-run/main_scene="res://scenes/Test.tscn"
+run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
