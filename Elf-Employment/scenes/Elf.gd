@@ -7,6 +7,7 @@ extends KinematicBody
 var speed: float = 1000
 var clicked: bool = false
 onready var navigator: NavigationAgent = $Navigator
+onready var animator: AnimationPlayer = $Pivot/Elf/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,16 +27,23 @@ func _physics_process(delta):
 #	var offset: Vector3 = location - self.translation
 #	offset = offset.normalized()
 #	self.translate(offset * (speed * delta))
+	animator.play("2_Walk")
 
 	var movement_delta = speed * delta
 	var next_path_position : Vector3 = navigator.get_next_location()
+	
 	var current_agent_position : Vector3 = global_transform.origin
 	var new_velocity : Vector3 = (next_path_position - current_agent_position).normalized() * movement_delta
 	navigator.set_velocity(new_velocity)
 	
 func _on_velocity_computed(safe_velocity : Vector3):
 	var velocity = safe_velocity
+	
+	animator.playback_speed * (velocity.length() * 1)
+	animator.clear_caches()
 	self.move_and_slide(velocity)
+	if velocity.length() < 1:
+		animator.play("1_Idle")
 	
 func _on_report_intersection(intersection_point: Vector3):
 	clicked = true
@@ -47,12 +55,18 @@ func _on_report_intersection(intersection_point: Vector3):
 	navigator.get_next_location()
 	print("I am at: ", self.translation)
 	print("I want to go to: ", navigator.get_next_location())
+	
+	var direction: Vector3 = navigator.get_final_location() - self.translation
+	direction.x = 0
+	self.look_at(direction, Vector3.UP)
 #	print("Offset is: ", offset)
 	
 func _on_navigation_finished():
 	clicked = false
 	print("I am at: ", self.translation)
 	print("I want to go to: ", navigator.get_next_location())
+	
+	animator.play("1_Idle")
 #	print("Offset is: ", offset)
 		
 

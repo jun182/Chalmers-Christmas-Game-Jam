@@ -4,9 +4,13 @@
 [ext_resource path="res://Elf_red.material" type="Material" id=2]
 
 [node name="Elf" instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 
 [node name="Cube" parent="Armature/Skeleton" index="0"]
 material/0 = ExtResource( 2 )
 
 [node name="Plane004" parent="Armature/Skeleton" index="1"]
 material/0 = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_process_mode = 0
