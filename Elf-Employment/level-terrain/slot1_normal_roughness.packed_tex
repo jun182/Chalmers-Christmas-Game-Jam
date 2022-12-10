@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 512,
+	"src": {
+		"a": "res://assets/gravel/Gravel023_1K_Roughness.jpg",
+		"rgb": "res://assets/gravel/Gravel023_1K_NormalGL.jpg"
+	}
+}
