@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 	
 func _on_report_intersection(intersection_point: Vector3):
-	print(to_local(intersection_point))
+#	print(to_local(intersection_point))
 #	var offset: Vector3 = self.global_translation - (intersection_point + Vector3(0, 2, 0))
 	self.global_transform.origin = Vector3(intersection_point)
 #	)translation = self.to_local(
