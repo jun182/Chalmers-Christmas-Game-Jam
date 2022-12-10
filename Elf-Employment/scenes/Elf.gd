@@ -23,7 +23,7 @@ func _process(delta):
 #	print(navigator.get_next_location())
 	var location = navigator.get_next_location()
 	var offset: Vector3 = location - self.translation
-	offset.y = 0
+#	offset.y = 0
 	offset = offset.normalized()
 	
 #	print("I am at: ", self.translation)

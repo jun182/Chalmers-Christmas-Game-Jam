@@ -48,7 +48,6 @@ skeleton = NodePath("../../Ground/CollisionShape")
 
 [node name="MeshInstance2" type="MeshInstance" parent="NavigationMeshInstance"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 11.2266, 2.05237, -10.1933 )
-mesh = SubResource( 4 )
 skeleton = NodePath("../MeshInstance")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]

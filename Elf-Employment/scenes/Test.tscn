@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/Elf.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/CameraMovement.gd" type="Script" id=2]
+[ext_resource path="res://scenes/RayCast.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 30, 0.5, 30 )
+
+[sub_resource type="NavigationMesh" id=3]
+vertices = PoolVector3Array( -19.75, 1, -29.5, -29.5, 1, -29.5, -29.5, 1, -19.75, 8.5, 1, -12.5, 10.25, 1, -12.75, 10, 1, -29.5, 0, 1, -29.5, -9.75, 1, -29.5, -19.75, 1, -29.5, -29.5, 1, -19.75, 8.5, 1, -9.75, 8.5, 1, -12.5, 0, 1, -29.5, -9.75, 1, -29.5, -29.5, 1, -19.75, -29.5, 1, -9.75, 10.25, 1, -12.75, 12, 1, -12.75, 12.25, 1, -29.5, 10, 1, -29.5, 29.5, 1, -20.5, 29.5, 1, -29.5, 20.75, 1, -29.5, 13.5, 1, -12.75, 13.75, 1, -11, 29.5, 1, -11.25, 29.5, 1, -20.5, 20.75, 1, -29.5, 12.25, 1, -29.5, 12.25, 1, -29.5, 12, 1, -12.75, 13.5, 1, -12.75, 9.5, 4.5, -11.75, 9.5, 4.5, -8.5, 12.75, 4.5, -8.5, 12.75, 4.5, -11.75, 9.75, 1, -11.5, 9.75, 1, -8.75, 12.5, 1, -8.75, 12.5, 1, -11.5, 13.75, 1, -11, 13.75, 1, -9.25, 29.5, 1, -9, 29.5, 1, -11.25, -29.5, 1, 19.5, -29.5, 1, 29.5, -19.5, 1, 29.5, -29.5, 1, 9.75, -29.5, 1, 19.5, -19.5, 1, 29.5, -29.5, 1, 9.75, -19.5, 1, 29.5, -9.5, 1, 29.5, -29.5, 1, 0, 8.5, 1, -7.75, 8.5, 1, -9.75, -29.5, 1, -9.75, -29.5, 1, 0, -9.5, 1, 29.5, 0.5, 1, 29.5, 10.75, 1, 29.5, 10.75, 1, -7.5, 8.5, 1, -7.75, 0.5, 1, 29.5, 20, 1, 29.5, 29.5, 1, 29.5, 29.5, 1, 19.75, 29.5, 1, -9, 13.75, 1, -9.25, 13.5, 1, -7.5, 29.5, 1, 0.5, 10.75, 1, 29.5, 20, 1, 29.5, 29.5, 1, 19.75, 29.5, 1, 10.25, 10.75, 1, -7.5, 29.5, 1, 0.5, 13.5, 1, -7.5, 10.75, 1, -7.5, 29.5, 1, 10.25 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 4, 3, 5 ), PoolIntArray( 5, 3, 6 ), PoolIntArray( 9, 8, 7 ), PoolIntArray( 11, 10, 12 ), PoolIntArray( 12, 10, 13 ), PoolIntArray( 13, 10, 14 ), PoolIntArray( 14, 10, 15 ), PoolIntArray( 16, 19, 17 ), PoolIntArray( 17, 19, 18 ), PoolIntArray( 22, 21, 20 ), PoolIntArray( 24, 23, 25 ), PoolIntArray( 25, 23, 26 ), PoolIntArray( 26, 23, 27 ), PoolIntArray( 27, 23, 28 ), PoolIntArray( 31, 30, 29 ), PoolIntArray( 35, 34, 32 ), PoolIntArray( 32, 34, 33 ), PoolIntArray( 39, 38, 36 ), PoolIntArray( 36, 38, 37 ), PoolIntArray( 40, 43, 41 ), PoolIntArray( 41, 43, 42 ), PoolIntArray( 46, 45, 44 ), PoolIntArray( 49, 48, 47 ), PoolIntArray( 51, 50, 52 ), PoolIntArray( 52, 50, 53 ), PoolIntArray( 55, 54, 56 ), PoolIntArray( 56, 54, 57 ), PoolIntArray( 57, 54, 58 ), PoolIntArray( 58, 54, 59 ), PoolIntArray( 61, 60, 62 ), PoolIntArray( 62, 60, 63 ), PoolIntArray( 66, 65, 64 ), PoolIntArray( 68, 67, 69 ), PoolIntArray( 69, 67, 70 ), PoolIntArray( 72, 71, 73 ), PoolIntArray( 73, 71, 74 ), PoolIntArray( 74, 71, 75 ), PoolIntArray( 77, 76, 78 ), PoolIntArray( 78, 76, 79 ) ]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 60, 1, 60 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0.0862745, 1, 1 )
+
+[node name="Main" type="Node"]
+
+[node name="Ground" type="StaticBody" parent="."]
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 1 )
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../Ground/CollisionShape")
+
+[node name="MeshInstance2" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 11.2266, 2.05237, -10.1933 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../MeshInstance")
+material/0 = SubResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.494, 0 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+unique_name_in_owner = true
+transform = Transform( 0.707107, 0.418617, -0.569877, 0, 0.805928, 0.592013, 0.707107, -0.418617, 0.569877, 0, 7.5, 0 )
+projection = 1
+size = 22.9264
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="Camera"]
+transform = Transform( 0.612453, -0.353687, 0.707, 0.500066, 0.866353, 0, -0.612453, 0.353687, 0.707, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 100, -1, 0 )
+debug_shape_custom_color = Color( 0.803922, 0.0862745, 0.0862745, 1 )
+debug_shape_thickness = 5
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
