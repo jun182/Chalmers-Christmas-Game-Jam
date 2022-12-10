@@ -15,9 +15,11 @@ var TEMP_NEXT = Vector3(0,0,0)
 var time_since_moving: float = 0
 var timeout: float = 0.3
 
+var is_reached: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_parent().get_node("Camera").get_node("RayCast").connect("report_intersection", self, "_on_report_intersection")
+	get_parent().get_node("Ground").connect("report_intersection", self, "_on_report_intersection")
 	navigator.connect("navigation_finished", self, "_on_navigation_finished")
 	navigator.connect("velocity_computed", self, "_on_velocity_computed")
 
@@ -42,7 +44,8 @@ func _physics_process(delta):
 	var new_velocity : Vector3 = (next_path_position - current_agent_position).normalized() * movement_delta
 	
 	var direction: Vector3 = next_path_position
-	self.look_at(direction, Vector3.UP)
+	if not is_reached:
+		self.look_at(direction, Vector3.UP)
 	self.rotation_degrees.x = 0
 	TEMP_NEXT = next_path_position
 	
@@ -59,6 +62,7 @@ func _on_velocity_computed(safe_velocity : Vector3):
 	if velocity.length() < 1 && time_since_moving >= timeout:
 		animator.play("1_Idle")
 		navigator.set_target_location(self.translation)
+		is_reached = true
 	
 func _on_report_intersection(intersection_point: Vector3):
 	clicked = true

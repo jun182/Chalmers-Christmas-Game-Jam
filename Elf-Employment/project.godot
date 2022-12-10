@@ -30,6 +30,10 @@ config/name="Elf-Employment"
 run/main_scene="res://scenes/Test.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
@@ -37,6 +41,7 @@ enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
 [global]
 
 shortcuts=false
+light=false
 
 [gui]
 

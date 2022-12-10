@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Elf" parent="Pivot" instance=ExtResource( 3 )]
-transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, -1.03918, 0 )
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.000443935, -0.586614, -7.48634e-05 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24127e-05, 0.411167, 0 )
