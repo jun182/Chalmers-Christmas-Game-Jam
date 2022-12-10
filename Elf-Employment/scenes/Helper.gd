@@ -12,12 +12,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	drawline(get_parent().get_node("RayCast").global_translation, get_parent().get_node("RayCast").cast_to)
-#
-#func drawline(a: Vector3, b: Vector3):
-#	begin(Mesh.PRIMITIVE_LINES)
-#	set_color(Color.black)
-#	add_vertex(a)
-#	add_vertex(b)
-#	end()
+func _process(delta):
+	clear()
+	drawline(get_parent().get_node("Player").global_translation, to_global(get_parent().get_node("Player").TEMP_NEXT))
+
+func drawline(a: Vector3, b: Vector3):
+	begin(Mesh.PRIMITIVE_LINES)
+	set_color(Color.black)
+	add_vertex(a)
+	add_vertex(b)
+	end()
