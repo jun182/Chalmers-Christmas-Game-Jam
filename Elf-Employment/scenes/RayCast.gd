@@ -25,10 +25,10 @@ func _input(event):
 		print(event.position)
 		var newOrigin: Vector3 = camera.project_ray_origin(event.position)
 		print(newOrigin)
-		var newDestination: Vector3 = newOrigin + camera.project_ray_normal(event.position) * ray_length
+		var newDestination: Vector3 = camera.project_ray_normal(event.position) * ray_length
 		print(newDestination)
 
-		self.global_transform.origin = newOrigin
+		self.global_translate(newOrigin-global_translation)
 		self.cast_to = newDestination
 #		print("Collision at: ", get_collision_point())
 		print(is_colliding())
