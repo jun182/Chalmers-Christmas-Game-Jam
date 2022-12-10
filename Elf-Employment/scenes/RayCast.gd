@@ -8,7 +8,7 @@ extends RayCast
 var ray_length: float = 20.0
 var camera: Camera
 
-onready var line = $Helper
+#onready var line = $Helper
 
 signal report_intersection
 
