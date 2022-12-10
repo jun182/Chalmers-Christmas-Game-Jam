@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Elf.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/CameraMovement.gd" type="Script" id=2]
@@ -26,7 +26,10 @@ geometry_source_group_name = "navigable"
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 60, 1, 60 )
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="Resource" id=4]
+script = ExtResource( 13 )
+mode = 0
+textures = [ [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ], [ ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ) ] ]
 
 [node name="Main" type="Node"]
 
