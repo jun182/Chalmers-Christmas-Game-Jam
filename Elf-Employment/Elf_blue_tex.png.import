@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Snow006_1K_Color.jpg-be08061bce74be4ed8acd0b20611defc.s3tc.stex"
-path.etc2="res://.import/Snow006_1K_Color.jpg-be08061bce74be4ed8acd0b20611defc.etc2.stex"
+path.s3tc="res://.import/Elf_blue_tex.png-5501f89ad52b8185a5fe8b3acf7b598d.s3tc.stex"
+path.etc2="res://.import/Elf_blue_tex.png-5501f89ad52b8185a5fe8b3acf7b598d.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/snow/Snow006_1K_Color.jpg"
-dest_files=[ "res://.import/Snow006_1K_Color.jpg-be08061bce74be4ed8acd0b20611defc.s3tc.stex", "res://.import/Snow006_1K_Color.jpg-be08061bce74be4ed8acd0b20611defc.etc2.stex" ]
+source_file="res://Elf_blue_tex.png"
+dest_files=[ "res://.import/Elf_blue_tex.png-5501f89ad52b8185a5fe8b3acf7b598d.s3tc.stex", "res://.import/Elf_blue_tex.png-5501f89ad52b8185a5fe8b3acf7b598d.etc2.stex" ]
 
 [params]
 
