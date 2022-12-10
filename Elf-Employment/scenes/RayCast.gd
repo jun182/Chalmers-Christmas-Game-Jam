@@ -31,6 +31,7 @@ func _input(event):
 		self.global_translate(newOrigin-global_translation)
 		self.cast_to = newDestination
 #		print("Collision at: ", get_collision_point())
+		self.force_raycast_update()
 		print(is_colliding())
 		if (is_colliding()):
 			emit_signal("report_intersection", get_collision_point())
