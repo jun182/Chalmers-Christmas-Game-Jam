@@ -22,20 +22,20 @@ func _input(event):
 		
 		
 #		var newOrigin: Vector3 = Vector3(event.position.x, cam.translation.y, event.position.y)
-		print(event.position)
+#		print(event.position)
 		var newOrigin: Vector3 = camera.project_ray_origin(event.position)
-		print(newOrigin)
+#		print(newOrigin)
 		var newDestination: Vector3 = camera.project_ray_normal(event.position) * ray_length
-		print(newDestination)
+#		print(newDestination)
 
 		self.global_translate(newOrigin-global_translation)
 		self.cast_to = newDestination
 #		print("Collision at: ", get_collision_point())
 		self.force_raycast_update()
-		print(is_colliding())
+#		print(is_colliding())
 		if (is_colliding()):
 			emit_signal("report_intersection", get_collision_point())
-			print(get_collider())
+#			print(get_collider())
 #		print("emitted")
 		
 
