@@ -87,6 +87,8 @@ func _process(delta):
 	elif belief_level < 0:
 		belief_level = 0
 		if not is_converted:
+			animator.clear_queue()
+			animator.clear_caches()
 			animator.play("5_Conversion")
 			animator.playback_speed = 1
 			animator.current_animation.repeat(0)
@@ -94,6 +96,8 @@ func _process(delta):
 			is_converted = true
 		
 	progress.progress = belief_level
+	if is_talking && not is_converted:
+		animator.play("3_Talk")
 		
 
 func _physics_process(delta):
@@ -125,7 +129,9 @@ func _on_velocity_computed(safe_velocity : Vector3):
 	
 	self.move_and_slide(velocity)
 
-	animator.playback_speed = velocity.length() * 0.2
+	if not is_talking:
+		animator.playback_speed = velocity.length() * 0.2
+		
 	if velocity.length() < 1 && time_since_moving >= timeout:
 		animator.play("1_Idle")
 		navigator.set_target_location(self.translation)
