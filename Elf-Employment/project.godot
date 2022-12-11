@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "HTerrainDataSaver",
 "language": "GDScript",
 "path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+}, {
+"base": "Sprite3D",
+"class": "healthbar3D",
+"language": "GDScript",
+"path": "res://Healthbar3D.gd"
 } ]
 _global_script_class_icons={
 "HTerrainDataLoader": "",
-"HTerrainDataSaver": ""
+"HTerrainDataSaver": "",
+"healthbar3D": "res://class_icon.png"
 }
 
 [application]
@@ -36,7 +42,7 @@ HerdManager="*res://scenes/HerdManager.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/radial_progress/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
 
 [global]
 

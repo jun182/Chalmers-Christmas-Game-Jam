@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Detector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Elf.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/Elf.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Talker.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.75
 radius = 0.5
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["friendly"]]
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Spatial" parent="."]
@@ -28,7 +30,18 @@ visible = false
 collision_layer = 2048
 collision_mask = 1024
 
+[node name="Talker" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+
+[node name="RadialProgressBar" parent="HealthBar/Viewport" index="0"]
+bar_color = Color( 1, 0, 0, 0.784314 )
+
 [connection signal="area_entered" from="Detector" to="." method="_on_Detector_area_entered"]
 [connection signal="area_exited" from="Detector" to="." method="_on_Detector_area_exited"]
+[connection signal="area_entered" from="Talker" to="." method="_on_Talker_area_entered"]
+[connection signal="area_exited" from="Talker" to="." method="_on_Talker_area_exited"]
 
 [editable path="Pivot/Elf"]
+[editable path="HealthBar"]
