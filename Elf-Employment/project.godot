@@ -42,7 +42,7 @@ HerdManager="*res://scenes/HerdManager.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/radial_progress/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
 
 [global]
 

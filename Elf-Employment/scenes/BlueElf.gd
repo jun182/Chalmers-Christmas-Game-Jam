@@ -202,5 +202,6 @@ func _on_conversion(anim_name: String):
 	var player = scene.instance()
 	player.global_translation = self.global_translation
 	player.rotation = self.rotation
+	player.scale = Vector3(1.5, 1.5, 1.5)
 	get_parent().add_child(player)
 	self.queue_free()
