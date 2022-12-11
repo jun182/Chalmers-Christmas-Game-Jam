@@ -4,17 +4,24 @@ extends KinematicBody
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed: float = 1000
-var clicked: bool = false
 
 onready var navigator: NavigationAgent = $Navigator
 onready var animator: AnimationPlayer = $Pivot/Elf/AnimationPlayer
 
+onready var talker = $Talker
+
 var manager
 
+# Movement
 var time_since_moving: float = 0
 var timeout: float = 0.3
 
+var speed: float = 1000
+var clicked: bool = false
+
+var is_reached: bool = false
+
+# Agitation
 export var group_id: int
 
 enum State{
@@ -29,7 +36,17 @@ var agitated_timer: float = 0
 var agitation_timeout: float = 3
 var agitation_target = null
 
-var is_reached: bool = false
+# Debates
+var is_being_convinced: bool = false
+
+var belief_level: float = 100
+
+var persuasion_modifier: float = 0
+var is_converted: bool = false
+onready var progress = $HealthBar/Viewport/RadialProgressBar
+var is_talking: bool = false
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,12 +77,35 @@ func _process(delta):
 	if state == State.AGITATED:
 		set_navigation(agitation_target.global_translation)
 		
+	if is_being_convinced:
+		belief_level -= 2 * delta * persuasion_modifier
+	else: 
+		belief_level += 4 * delta
+		
+	if belief_level > 100:
+		belief_level = 100
+	elif belief_level < 0:
+		belief_level = 0
+		if not is_converted:
+			animator.play("5_Conversion")
+			animator.playback_speed = 1
+			animator.current_animation.repeat(0)
+			animator.connect("animation_finished", self, "_on_conversion")
+			is_converted = true
+		
+	progress.progress = belief_level
+		
 
 func _physics_process(delta):
 	if not clicked:
 		return
-		
-	animator.play("2_Walk")
+	
+	if not is_converted && is_talking:
+		animator.play("3_Talk")
+	elif not is_converted:
+		animator.play("2_Walk") 
+	else:
+		return
 
 	var movement_delta = speed * delta
 	var next_path_position : Vector3 = navigator.get_next_location()
@@ -95,7 +135,6 @@ func _on_call_backup(new_position, new_group_id):
 	if group_id == new_group_id:
 		state = State.BACKUP
 		agitation_target = new_position
-	print("hylla")
 		
 	
 func set_navigation(intersection_point: Vector3):
@@ -121,3 +160,41 @@ func _on_Detector_area_entered(area):
 func _on_Detector_area_exited(area):
 	state = State.SEARCHING
 
+
+func _on_Talker_area_entered(area):
+	if (area.name == "Talker") && (area.get_parent().is_in_group("friendly")):
+		print ("Friendly encountered by enemy")
+		
+		var temp_modifier: float = 0
+		for i in talker.get_overlapping_areas():
+			if (area.name == "Talker") && i.get_parent().is_in_group("friendly"):
+				temp_modifier += 1
+			
+		persuasion_modifier = temp_modifier
+		
+		is_being_convinced = true
+		is_talking = true
+
+func _on_Talker_area_exited(area):
+	if (area.name == "Talker") && (area.get_parent().is_in_group("friendly")):
+		print ("Friendly left enemy")
+		
+		var temp_modifier: float = 0
+		var areas = talker.get_overlapping_areas()
+		for i in areas:
+			if (area.name == "Talker") && i.get_parent().is_in_group("friendly"):
+				temp_modifier += 1
+			
+		persuasion_modifier = temp_modifier
+		
+		if persuasion_modifier < 1:
+			is_being_convinced = false
+			is_talking = false
+
+func _on_conversion(anim_name: String):
+	var scene = load("res://scenes/Elf.tscn")
+	var player = scene.instance()
+	player.global_translation = self.global_translation
+	player.rotation = self.rotation
+	get_parent().add_child(player)
+	self.queue_free()
