@@ -20,6 +20,5 @@ func _process(delta):
 #	print (position)
 
 func _input_event(camera: Object, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int):
-
 	if event is InputEventMouseButton:
 		emit_signal("report_intersection", position)

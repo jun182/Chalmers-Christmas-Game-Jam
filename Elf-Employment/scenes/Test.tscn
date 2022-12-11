@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Elf.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/CameraMovement.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/art/Buildings/Building_01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Helper.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Ground.gd" type="Script" id=6]
+[ext_resource path="res://scenes/BlueElf.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 0.5, 30 )
@@ -66,34 +67,13 @@ debug_shape_thickness = 5
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48081, -5.10568 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3124, 1.48081, -16.7704 )
 
 [node name="Player4" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14399, 1.48081, -5.10568 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 1.48081, -16.7704 )
 
 [node name="Player6" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14399, 1.48081, -0.134896 )
-
-[node name="Player7" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.48595, 1.48081, -0.134896 )
-
-[node name="Player10" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.48595, 1.48081, 1.9872 )
-
-[node name="Player8" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79493, 1.48081, -4.24481 )
-
-[node name="Player9" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81813, 1.48081, -4.24481 )
-
-[node name="Player5" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48081, -11.7386 )
-
-[node name="Player3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35712, 1.48081, -5.10568 )
-
-[node name="Player2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48081, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 1.48081, -11.7996 )
 
 [node name="Helper" parent="." instance=ExtResource( 5 )]
 
@@ -111,3 +91,13 @@ visible = false
 light_energy = 0.5
 light_specular = 1.087
 omni_range = 7.85016
+
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.79329, 1.481, 7.86215 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.999072, 0, -0.0430788, 0, 1, 0, 0.0430788, 0, 0.999072, 12.6622, 1.481, -1.55462 )
+group_id = 1
+
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.06, 1.481, -22.101 )

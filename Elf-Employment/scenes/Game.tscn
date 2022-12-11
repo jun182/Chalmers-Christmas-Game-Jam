@@ -45,6 +45,7 @@ shape = SubResource( 1 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 transform = Transform( 8.83696, 0, 0, 0, 1, 0, 0, 0, 8.83696, -0.0327809, 0.0403142, -0.0146604 )
+visible = false
 navmesh = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance" groups=["bake"]]

@@ -30,9 +30,9 @@ config/name="Elf-Employment"
 run/main_scene="res://scenes/Test.tscn"
 config/icon="res://icon.png"
 
-[display]
+[autoload]
 
-window/size/fullscreen=true
+HerdManager="*res://scenes/HerdManager.tscn"
 
 [editor_plugins]
 
