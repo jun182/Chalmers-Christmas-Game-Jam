@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Elf.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/CameraMovement.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Large_tree.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 0.5, 30 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 60, 1, 60 )
+
+[sub_resource type="Environment" id=3]
+ambient_light_color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
 [node name="Main" type="Node"]
 
@@ -22,6 +26,7 @@ skeleton = NodePath("../CollisionShape")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.494, 0 )
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="Camera" type="Camera" parent="."]
@@ -33,3 +38,9 @@ script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96815, 0 )
+
+[node name="Large_tree" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47265, 0.500001, 4.91061 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
