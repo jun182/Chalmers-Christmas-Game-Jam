@@ -24,6 +24,7 @@ shape = SubResource( 1 )
 
 [node name="Navigator" type="NavigationAgent" parent="."]
 avoidance_enabled = true
+radius = 2.0
 
 [node name="Detector" parent="." instance=ExtResource( 1 )]
 visible = false

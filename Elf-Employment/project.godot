@@ -40,10 +40,6 @@ config/icon="res://icon.png"
 
 HerdManager="*res://scenes/HerdManager.tscn"
 
-[display]
-
-window/size/fullscreen=true
-
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )

@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	clear()
-	drawline(get_parent().get_node("Player").global_translation, to_global(get_parent().get_node("Player").TEMP_NEXT))
+	drawline(get_parent().get_node("Player2").global_translation, to_global(get_parent().get_node("Player2").TEMP_NEXT))
 
 func drawline(a: Vector3, b: Vector3):
 	begin(Mesh.PRIMITIVE_LINES)
