@@ -46,6 +46,8 @@ var is_converted: bool = false
 onready var progress = $HealthBar/Viewport/RadialProgressBar
 var is_talking: bool = false
 
+var is_convinced: bool = false
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -212,8 +214,10 @@ func _on_conversion(anim_name: String):
 #	self.queue_free()
 	animator.play("Given_up")
 	talker.queue_free()
+	is_convinced = true
 
 func reevaluate_opponents() -> void:
+	if not is_convinced:
 		var temp_modifier: float = 0
 		if talker == null:
 			return
