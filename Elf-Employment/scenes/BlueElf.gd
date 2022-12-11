@@ -182,6 +182,7 @@ func _on_Talker_area_entered(area):
 #				temp_modifier += 1
 #
 #		persuasion_modifier = temp_modifier
+		reevaluate_opponents()
 		
 		is_being_convinced = true
 		is_talking = true
@@ -197,6 +198,7 @@ func _on_Talker_area_exited(area):
 #				temp_modifier += 1
 #
 #		persuasion_modifier = temp_modifier
+		reevaluate_opponents()
 		
 		if persuasion_modifier < 1:
 			is_being_convinced = false
@@ -215,7 +217,7 @@ func reevaluate_opponents() -> void:
 		var temp_modifier: float = 0
 		var areas = talker.get_overlapping_areas()
 		for i in areas:
-			if (i.name == "Talker") && i.get_parent().is_in_group("enemy"):
+			if (i.name == "Talker") && i.get_parent().is_in_group("friendly"):
 				temp_modifier += 1
 
 		persuasion_modifier = temp_modifier
