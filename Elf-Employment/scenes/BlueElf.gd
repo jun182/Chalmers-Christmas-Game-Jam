@@ -215,6 +215,8 @@ func _on_conversion(anim_name: String):
 	
 func reevaluate_opponents() -> void:
 		var temp_modifier: float = 0
+		if talker == null:
+			return
 		var areas = talker.get_overlapping_areas()
 		for i in areas:
 			if (i.name == "Talker") && i.get_parent().is_in_group("friendly"):

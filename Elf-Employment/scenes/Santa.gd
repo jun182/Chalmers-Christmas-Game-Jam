@@ -39,7 +39,7 @@ var agitation_target = null
 # Debates
 var is_being_convinced: bool = false
 
-var belief_level: float = 500
+var belief_level: float = 10000
 
 var persuasion_modifier: float = 0
 var is_converted: bool = false
@@ -215,6 +215,8 @@ func _on_conversion(anim_name: String):
 
 func reevaluate_opponents() -> void:
 		var temp_modifier: float = 0
+		if talker == null:
+			return
 		var areas = talker.get_overlapping_areas()
 		for i in areas:
 			if (i.name == "Talker") && i.get_parent().is_in_group("friendly"):
