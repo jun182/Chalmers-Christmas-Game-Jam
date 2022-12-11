@@ -60,6 +60,11 @@ func _process(delta):
 	
 	if is_talking && not is_converted:
 		animator.play("3_Talk")
+		
+	reevaluate_opponents()
+	if persuasion_modifier < 1:
+		is_being_convinced = false
+		is_talking = false
 
 func _physics_process(delta):
 	if not clicked:
@@ -128,25 +133,29 @@ func _on_Talker_area_entered(area):
 		print ("Friendly encountered by enemy")
 		is_being_convinced = true
 		
-		var temp_modifier: float = 0
-		for i in talker.get_overlapping_areas():
-			if (area.name == "Talker") && i.get_parent().is_in_group("enemy"):
-				temp_modifier += 1
+#		var temp_modifier: float = 0
+#		for i in talker.get_overlapping_areas():
+#			if (i.name == "Talker") && i.get_parent().is_in_group("enemy"):
+#				temp_modifier += 1
 			
-		persuasion_modifier = temp_modifier
+#		persuasion_modifier = temp_modifier
+
+		reevaluate_opponents()
 		is_talking = true
 
 func _on_Talker_area_exited(area):
 	if (area.name == "Talker") && (area.get_parent().is_in_group("enemy")):
 		print ("Friendly left enemy")
 		
-		var temp_modifier: float = 0
-		var areas = talker.get_overlapping_areas()
-		for i in areas:
-			if (area.name == "Talker") && i.get_parent().is_in_group("enemy"):
-				temp_modifier += 1
-			
-		persuasion_modifier = temp_modifier
+#		var temp_modifier: float = 0
+#		var areas = talker.get_overlapping_areas()
+#		for i in areas:
+#			if (i.name == "Talker") && i.get_parent().is_in_group("enemy"):
+#				temp_modifier += 1
+#
+#		persuasion_modifier = temp_modifier
+
+		reevaluate_opponents()
 		
 		if persuasion_modifier < 1:
 			is_being_convinced = false
@@ -154,3 +163,12 @@ func _on_Talker_area_exited(area):
 			
 func _on_conversion(anim_name: String):
 	self.queue_free()
+
+func reevaluate_opponents() -> void:
+		var temp_modifier: float = 0
+		var areas = talker.get_overlapping_areas()
+		for i in areas:
+			if (i.name == "Talker") && i.get_parent().is_in_group("enemy"):
+				temp_modifier += 1
+
+		persuasion_modifier = temp_modifier
